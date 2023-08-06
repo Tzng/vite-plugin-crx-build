@@ -1,0 +1,71 @@
+{
+  "name": "@allahbin/vite-plugin-crx-build",
+  "version": "0.0.1",
+  "description": "对谷歌插件进行打包",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tzng/vite-plugin-crx-build.git",
+    "directory": "."
+  },
+  "homepage": "https://github.com/Tzng/vite-plugin-crx-build#README",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./*": {
+      "require": "./dist/cjs/*.js",
+      "import": "./dist/esm/*.js",
+      "types": "./dist/types/*.d.ts",
+      "default": "./dist/esm/*.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "Vite",
+    "Plugin",
+    "File",
+    "Manager",
+    "Zip",
+    "Deploy",
+    "Folder",
+    "Package",
+    "Compress",
+    "Archive",
+    "Squirrel"
+  ],
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "dev": "tsc -b -w",
+    "build": "rimraf dist && pnpm run build:cjs && pnpm run build:esm && pnpm run build:types",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:esm": "tsc --module esnext --outDir dist/esm",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationMap --outDir dist/types",
+    "prettier": "prettier --write \"src/**/*.ts\" \"*.md\"",
+    "publishNpm": "npm publish --access public --registry=https://registry.npmjs.org/"
+  },
+  "author": "allahbin1996@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "5.3.0",
+    "crx": "^5.0.1",
+    "jszip": "^3.10.1",
+    "vite": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/rimraf": "^4.0.5",
+    "rimraf": "^4.4.1",
+    "typescript": "^5.0.4"
+  }
+}

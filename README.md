@@ -2,22 +2,34 @@
 
 🎉 vite-plugin-crx-build 是一款用于打包CRX浏览器插件的vite插件，可以将压缩包打包成crx文件
 
+## 安装
+
+```bash
+npm install @allahbin/vite-plugin-crx-build --save-dev
+```
+
+或者yarn
+
+```bash
+yarn add @allahbin/vite-plugin-crx-build --dev
+```
+
 ## 使用方法
 
 ```typescript
 // Path: path/to/vite.config.ts
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import CrxBuild from '@allahbin/vite-plugin-crx-build';
 
 export default defineConfig({
-  plugins: [
-      CrxBuild({
-          keyFile: 'pem/allahbin.pem',
-          contentPath: path.join(distPath, buildFileName),
-          outputPath: path.join(extensionPath),
-          name: buildFileName,
-      })
-  ]
+    plugins: [
+        CrxBuild({
+            keyFile: 'pem/allahbin.pem',
+            contentPath: path.join(distPath, buildFileName),
+            outputPath: path.join(extensionPath),
+            name: buildFileName,
+        })
+    ]
 });
 ```
 
